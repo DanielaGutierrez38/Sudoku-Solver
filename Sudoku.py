@@ -49,10 +49,9 @@ class Sudoku:
         plt.show()
 
     def find_neighbors(self):
-        # Fill out the dictionary self.N such that for each cell (r, c),
         # self.N[(r, c)] contains a set of coordinate tuples (i, j) of all cells
         # that are in the same row, column, or 3x3 subgrid as the cell (r, c), excluding (r, c) itself.
-        # For example, for cell (0, 0), self.N[(0, 0)] should include all cells in row 0,
+        # For example, for cell (0, 0), self.N[(0, 0)] includes all cells in row 0,
         # all cells in column 0, and all cells in the top-left 3x3 subgrid, except for (0, 0).
         # This dictionary will be used to quickly access neighboring cells when checking for constraints.
         self.N = {}
@@ -92,12 +91,12 @@ class Sudoku:
       return neighbors #Return the set with (r, c)'s neighbors
 
     def init_valid(self):
-        # Using the neighbor dictionary self.N from find_neighbors(), fill out the dictionary self.V.
-        # For each cell (r, c), self.V[(r, c)] should contain the set of valid numbers (1-9) that can be placed in that cell
+        # Using the neighbor dictionary self.N from find_neighbors(), self.V is filled out
+        # For each cell (r, c), self.V[(r, c)] contains the set of valid numbers (1-9) that can be placed in that cell
         # without violating Sudoku rules (i.e., no duplicates in the same row, column, or 3x3 subgrid).
         # If a number is already placed in cell (r, c) in self.S (i.e., self.S[r][c] != 0),
         # then self.V[(r, c)] should be an empty set since the cell's value is fixed.
-        # For empty cells, compute the set by excluding numbers that appear in any of its neighboring cells in self.N[(r, c)].
+        # For empty cells, the set is computed by excluding numbers that appear in any of its neighboring cells in self.N[(r, c)].
         self.V = {}
 
         #Traverse sudoku board
